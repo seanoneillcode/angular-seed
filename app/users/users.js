@@ -9,7 +9,11 @@ angular.module('myApp.users', ['ngRoute'])
   });
 }])
 
-.controller('UsersCtrl', ['$scope', 'UsersService', function($scope, UsersService) {
+.controller('UsersCtrl', ['$scope', 'UsersService', '$location', function($scope, UsersService, $location) {
   $scope.users = UsersService.getUsers();
   console.log("users ", $scope.users);
+  $scope.loadConversation = function(user) {
+    console.log("load conversation with ", user.name);
+    $location.path("conversation/" + user.id);
+  };
 }]);

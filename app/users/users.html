@@ -1,4 +1,6 @@
 <p>list users page</p>
 <div ng-repeat="user in users">
-  username:{{user.name}}
+  <div ng-click="loadConversation(user)">
+    username:{{user.name}}
+  </div>
 </div>
