@@ -7,6 +7,7 @@ angular.module('myApp', [
   'myApp.users',
   'myApp.conversation',
   'myApp.version',
+  'myApp.conversationService',
   'myApp.usersService'
 ]).
 config(['$routeProvider', function($routeProvider) {
