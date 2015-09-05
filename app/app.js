@@ -6,7 +6,8 @@ angular.module('myApp', [
   'myApp.login',
   'myApp.users',
   'myApp.conversation',
-  'myApp.version'
+  'myApp.version',
+  'myApp.usersService'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/login'});

@@ -9,6 +9,7 @@ angular.module('myApp.users', ['ngRoute'])
   });
 }])
 
-.controller('UsersCtrl', [function() {
-
+.controller('UsersCtrl', ['$scope', 'UsersService', function($scope, UsersService) {
+  $scope.users = UsersService.getUsers();
+  console.log("users ", $scope.users);
 }]);
