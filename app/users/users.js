@@ -11,6 +11,9 @@ angular.module('myApp.users', ['ngRoute'])
 
 .controller('UsersCtrl', ['$scope', 'UsersService', '$location', 'LoginService', function($scope, UsersService, $location, LoginService) {
   $scope.users = UsersService.getUsers();
+  LoginService.getCurrentUser().then(function(user) {
+    $scope.currentUser = user;
+  });
   $scope.loadConversation = function(user) {
     $location.path("conversation/" + user.id);
   };

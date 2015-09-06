@@ -15,5 +15,6 @@ angular.module('myApp.conversation', ['ngRoute'])
   $scope.messages = ConversationService.getConversation($scope.id).messages;
   $scope.addMessage = function() {
     ConversationService.addMessage($scope.user.id, $scope.newmessage);
+    $scope.newmessage = "";
   };
 }]);
