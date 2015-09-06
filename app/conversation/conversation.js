@@ -13,6 +13,10 @@ angular.module('myApp.conversation', ['ngRoute'])
   $scope.id = $routeParams.id;
   $scope.user = UsersService.getUser($scope.id);
   console.log("user ", $scope.user);
-  $scope.conversation = ConversationService.getConversation($scope.id);
-  console.log("conversation ", $scope.conversation);
+  $scope.messages = ConversationService.getConversation($scope.id).messages;
+  console.log("conversation ", $scope.messages);
+
+  $scope.addMessage = function() {
+    ConversationService.addMessage($scope.user.id, $scope.newmessage);
+  };
 }]);

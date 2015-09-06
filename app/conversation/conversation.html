@@ -3,3 +3,10 @@
   id {{id}}
   name {{user.name}}
 </div>
+<div ng-repeat="message in messages">
+  {{message.msg}}
+</div>
+<form ng-submit="addMessage()">
+<input type="text" placeholder="message" ng-model="newmessage"></input>
+<button type="submit">send</button>
+</form>

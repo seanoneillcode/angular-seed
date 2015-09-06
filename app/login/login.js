@@ -9,18 +9,24 @@ angular.module('myApp.login', ['ngRoute'])
   });
 }])
 
-.controller('LoginCtrl', ['$scope', '$location', 'UsersService', function($scope, $location, UsersService) {
+.controller('LoginCtrl', ['$scope', '$location', 'UsersService', 'LoginService', function($scope, $location, UsersService, LoginService) {
+
+  LoginService.getCurrentUser().then(function(user) {
+    console.log("current user is ", user);
+    if (user !== undefined) {
+      $location.path("users");
+    }
+  });
+
   $scope.submitCredentials = function() {
-    console.log("user ", $scope.user);
-    console.log("password ", $scope.password);
     var users = UsersService.getUsers();
-    console.log("users ", users);
     var user = users.filter(function(user) {
       return user.name === $scope.user;
     })[0];
     if (user !== undefined) {
       if (user.password === $scope.password) {
-        $location.path("users");
+        LoginService.loginAsUser(user)
+        .then($location.path("users"));
       } else {
         // password is incorrect
       }
@@ -29,4 +35,9 @@ angular.module('myApp.login', ['ngRoute'])
     }
   };
 
+  $scope.createCredentials = function() {
+    var user = UsersService.createUser($scope.newuser, $scope.newpassword);
+    LoginService.loginAsUser(user)
+    .then($location.path("users"));
+  };
 }]);

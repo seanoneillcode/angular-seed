@@ -1,6 +1,13 @@
-<p>login page</p>
+<p>login as user</p>
 <form ng-submit="submitCredentials()">
 <input type="text" placeholder="user" ng-model="user"></input>
 <input type="text" placeholder="password" ng-model="password"></input>
 <button type="submit">login</button>
+</form>
+
+<p>create new user</p>
+<form ng-submit="createCredentials()">
+<input type="text" placeholder="user" ng-model="newuser"></input>
+<input type="text" placeholder="password" ng-model="newpassword"></input>
+<button type="submit">create</button>
 </form>
